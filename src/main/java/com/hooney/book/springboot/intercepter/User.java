@@ -1,6 +1,6 @@
-package com.hooney.book.springboot.web;
+package com.hooney.book.springboot.intercepter;
 
-import com.hooney.book.springboot.web.testEnum.Role;
+import com.hooney.book.springboot.intercepter.testEnum.Role;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

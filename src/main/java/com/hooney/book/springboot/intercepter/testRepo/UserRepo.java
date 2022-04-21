@@ -1,6 +1,6 @@
-package com.hooney.book.springboot.web.testRepo;
+package com.hooney.book.springboot.intercepter.testRepo;
 
-import com.hooney.book.springboot.web.User;
+import com.hooney.book.springboot.intercepter.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
