@@ -1,9 +1,9 @@
 package com.hooney.book.springboot.intercepter;
 
-import com.hooney.book.springboot.intercepter.testEnum.Role;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import com.hooney.book.springboot.intercepter.testEnum.Role;
 
 @Getter
 @Setter

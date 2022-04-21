@@ -1,10 +1,10 @@
 package com.hooney.book.springboot.intercepter;
 
-import com.hooney.book.springboot.intercepter.testEnum.Role;
+import com.hooney.book.springboot.intercepter.testRepo.UserRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import com.hooney.book.springboot.intercepter.testRepo.UserRepo;
+import com.hooney.book.springboot.intercepter.testEnum.Role;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
