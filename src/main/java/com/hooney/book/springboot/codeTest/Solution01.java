@@ -1,9 +1,10 @@
 package com.hooney.book.springboot.codeTest;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Solution {
+public class Solution01 {
     //문제2
 //    public static int solution(int[] numbers) {
 //        int answer = 0;
@@ -20,30 +21,26 @@ public class Solution {
 //    }
 
     public static int[] solution(int[] numbers) {
-        int[] answer = {};
-        ArrayList<Integer> totList = new ArrayList<>();  //합계 저장하는 배열
-        Arrays.sort(numbers);
-        for(int i=0; i < numbers.length; i++){
-            for(int j=1+i; j < numbers.length; j++){
-                int tmp = numbers[i] + numbers[j]; //n번째 + n+1번째 tmp 변수에 저장
-                if(totList.indexOf(tmp) < 0){      //indexOf 함수는 특정 문자열에서 해당 문자 인덱스 값 반환하고 찾지 못할때 -1 반환
-                    totList.add(tmp);
-                }
+        Set<Integer> sumSet = new HashSet<>();
+
+        for(int i=0; i<numbers.length-1; i++) {
+            for(int j=i+1; j<numbers.length; j++) {
+                sumSet.add(numbers[i] + numbers[j]);
             }
         }
-
-        answer = new int[totList.size()];
-
+        int[] answer = new int[sumSet.size()];
         int no = 0;
-        for(int num : totList){
+        for(int num: sumSet) {
             answer[no++] = num;
         }
+        Arrays.sort(answer);
+
         return answer;
     }
 
     public static void main(String[] args) {
         int[] result = {};
-        result = solution(new int[]{2,1,3,4,1});
+        result = solution(new int[]{1,1,0,1,1,100,89,32,14});
         System.out.println(Arrays.toString(result));
     }
 }
