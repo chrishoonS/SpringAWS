@@ -1,40 +1,44 @@
-plugins {
-    id 'org.springframework.boot' version '2.6.4'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
-
-}
-
-group 'com.hooney'
-version '1.0-SNAPSHOT'
-
-configurations{
-    compileOnly{
-        extendsFrom annotationProcessor
+buildscript {
+    ext {
+        springBootVersion = '2.1.9.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.hooney'
+version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
+
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
-    implementation('junit:junit:4.13.1')
-    implementation('org.springframework.boot:spring-boot-starter-websocket:2.6.4')
-    annotationProcessor('org.projectlombok:lombok:1.18.20')
-    compileOnly('org.projectlombok:lombok:1.18.20')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.projectlombok:lombok')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa') //jpa 추상화 라이브러리, 버전에 맞게 자동으로 관리
+    compile('org.springframework.boot:spring-boot-starter-mustache')
+    compile('com.h2database:h2') //인메모리 관계형 데이터 베이스, 메모리에서 실행되어 애플리케이션 재시작시 초기화되어 테스트 용도로 많이 쓰임
 
-    //Spring Data JPA를 위한 의존성
-    compileOnly('org.springframework.boot:spring-boot-starter-data-jpa') //jpa 추상화 라이브러리, 버전에 맞게 자동으로 관리
-    compileOnly('com.h2database:h2') //인메모리 관계형 데이터 베이스, 메모리에서 실행되어 애플리케이션 재시작시 초기화되어 테스트 용도로 많이 쓰임
 
-    //spring interceptor를 위한 추가
-    implementation('org.springframework.boot:spring-boot-starter-web')
-    implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-oauth2-client')
+    compile('org.springframework.session:spring-session-jdbc')
 
-    testCompileOnly('org.springframework.boot:spring-boot-starter-test:2.6.4')
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    compile("org.mariadb.jdbc:mariadb-java-client")
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile("org.springframework.security:spring-security-test")
 }
 
 test {
